@@ -15,9 +15,9 @@ def ldaLearn(X,y):
     #
     # Outputs
     # means - A d x k matrix containing learnt means for each of the k classes
-    # covmat - A single d x d learnt covariance matrix 
-    
-    # IMPLEMENT THIS METHOD 
+    # covmat - A single d x d learnt covariance matrix
+
+    # IMPLEMENT THIS METHOD
     return means,covmat
 
 def qdaLearn(X,y):
@@ -28,8 +28,9 @@ def qdaLearn(X,y):
     # Outputs
     # means - A d x k matrix containing learnt means for each of the k classes
     # covmats - A list of k d x d learnt covariance matrices for each of the k classes
-    
+
     # IMPLEMENT THIS METHOD
+    
     return means,covmats
 
 def ldaTest(means,covmat,Xtest,ytest):
@@ -57,24 +58,24 @@ def qdaTest(means,covmats,Xtest,ytest):
     return acc,ypred
 
 def learnOLERegression(X,y):
-    # Inputs:                                                         
-    # X = N x d 
-    # y = N x 1                                                               
-    # Output: 
-    # w = d x 1 
-	
-    # IMPLEMENT THIS METHOD                                                   
+    # Inputs:
+    # X = N x d
+    # y = N x 1
+    # Output:
+    # w = d x 1
+
+    # IMPLEMENT THIS METHOD
     return w
 
 def learnRidgeRegression(X,y,lambd):
     # Inputs:
-    # X = N x d                                                               
-    # y = N x 1 
+    # X = N x d
+    # y = N x 1
     # lambd = ridge parameter (scalar)
-    # Output:                                                                  
-    # w = d x 1                                                                
+    # Output:
+    # w = d x 1
 
-    # IMPLEMENT THIS METHOD                                                   
+    # IMPLEMENT THIS METHOD
     return w
 
 def testOLERegression(w,Xtest,ytest):
@@ -84,7 +85,7 @@ def testOLERegression(w,Xtest,ytest):
     # ytest = X x 1
     # Output:
     # mse
-    
+
     # IMPLEMENT THIS METHOD
     return mse
 
@@ -92,25 +93,25 @@ def regressionObjVal(w, X, y, lambd):
 
     # compute squared error (scalar) and gradient of squared error with respect
     # to w (vector) for the given data X and y and the regularization parameter
-    # lambda                                                                  
+    # lambda
 
-    # IMPLEMENT THIS METHOD                                             
+    # IMPLEMENT THIS METHOD
     return error, error_grad
 
 def mapNonLinear(x,p):
-    # Inputs:                                                                  
-    # x - a single column vector (N x 1)                                       
-    # p - integer (>= 0)                                                       
-    # Outputs:                                                                 
-    # Xp - (N x (p+1)) 
-	
+    # Inputs:
+    # x - a single column vector (N x 1)
+    # p - integer (>= 0)
+    # Outputs:
+    # Xp - (N x (p+1))
+
     # IMPLEMENT THIS METHOD
     return Xp
 
 # Main script
 
 # Problem 1
-# load the sample data                                                                 
+# load the sample data
 if sys.version_info.major == 2:
     X,y,Xtest,ytest = pickle.load(open('sample.pickle','rb'))
 else:
@@ -194,7 +195,7 @@ lambdas = np.linspace(0, 1, num=k)
 i = 0
 mses4_train = np.zeros((k,1))
 mses4 = np.zeros((k,1))
-opts = {'maxiter' : 20}    # Preferred value.                                                
+opts = {'maxiter' : 20}    # Preferred value.
 w_init = np.ones((X_i.shape[1],1))
 for lambd in lambdas:
     args = (X_i, y, lambd)
