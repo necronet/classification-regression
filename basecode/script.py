@@ -8,20 +8,7 @@ import matplotlib.pyplot as plt
 import pickle
 import sys
 from discriminant import ldaLearn, qdaLearn, ldaTest, qdaTest
-from linear_regression import learnOLERegression, testOLERegression, learnRidgeRegression
-
-
-def mapNonLinear(x,p):
-    # Inputs:
-    # x - a single column vector (N x 1)
-    # p - integer (>= 0)
-    # Outputs:
-    # Xp - (N x (p+1))
-
-    # IMPLEMENT THIS METHOD
-    return Xp
-
-# Main script
+from linear_regression import learnOLERegression, testOLERegression, learnRidgeRegression, mapNonLinear,regressionObjVal
 
 # Problem 1
 # load the sample data
@@ -145,28 +132,28 @@ plt.legend(['Using scipy.minimize','Direct minimization'])
 plt.show()
 
 
-# # Problem 5
-# pmax = 7
-# lambda_opt = 0 # REPLACE THIS WITH lambda_opt estimated from Problem 3
-# mses5_train = np.zeros((pmax,2))
-# mses5 = np.zeros((pmax,2))
-# for p in range(pmax):
-#     Xd = mapNonLinear(X[:,2],p)
-#     Xdtest = mapNonLinear(Xtest[:,2],p)
-#     w_d1 = learnRidgeRegression(Xd,y,0)
-#     mses5_train[p,0] = testOLERegression(w_d1,Xd,y)
-#     mses5[p,0] = testOLERegression(w_d1,Xdtest,ytest)
-#     w_d2 = learnRidgeRegression(Xd,y,lambda_opt)
-#     mses5_train[p,1] = testOLERegression(w_d2,Xd,y)
-#     mses5[p,1] = testOLERegression(w_d2,Xdtest,ytest)
-#
-# fig = plt.figure(figsize=[12,6])
-# plt.subplot(1, 2, 1)
-# plt.plot(range(pmax),mses5_train)
-# plt.title('MSE for Train Data')
-# plt.legend(('No Regularization','Regularization'))
-# plt.subplot(1, 2, 2)
-# plt.plot(range(pmax),mses5)
-# plt.title('MSE for Test Data')
-# plt.legend(('No Regularization','Regularization'))
-# plt.show()
+# Problem 5
+pmax = 7
+lambda_opt = 0 # REPLACE THIS WITH lambda_opt estimated from Problem 3
+mses5_train = np.zeros((pmax,2))
+mses5 = np.zeros((pmax,2))
+for p in range(pmax):
+    Xd = mapNonLinear(X[:,2],p)
+    Xdtest = mapNonLinear(Xtest[:,2],p)
+    w_d1 = learnRidgeRegression(Xd,y,0)
+    mses5_train[p,0] = testOLERegression(w_d1,Xd,y)
+    mses5[p,0] = testOLERegression(w_d1,Xdtest,ytest)
+    w_d2 = learnRidgeRegression(Xd,y,lambda_opt)
+    mses5_train[p,1] = testOLERegression(w_d2,Xd,y)
+    mses5[p,1] = testOLERegression(w_d2,Xdtest,ytest)
+
+fig = plt.figure(figsize=[12,6])
+plt.subplot(1, 2, 1)
+plt.plot(range(pmax),mses5_train)
+plt.title('MSE for Train Data')
+plt.legend(('No Regularization','Regularization'))
+plt.subplot(1, 2, 2)
+plt.plot(range(pmax),mses5)
+plt.title('MSE for Test Data')
+plt.legend(('No Regularization','Regularization'))
+plt.show()
