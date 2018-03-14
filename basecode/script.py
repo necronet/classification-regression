@@ -60,7 +60,7 @@ for i in np.unique(ytest):
 
 plt.title('QDA')
 
-plt.show()
+# plt.show()
 # Problem 2
 if sys.version_info.major == 2:
     X,y,Xtest,ytest = pickle.load(open('diabetes.pickle','rb'))
@@ -98,7 +98,7 @@ plt.title('MSE for Train Data')
 plt.subplot(1, 2, 2)
 plt.plot(lambdas,mses3)
 plt.title('MSE for Test Data')
-
+plt.show()
 
 # Problem 4
 k = 101
@@ -129,12 +129,12 @@ plt.plot(lambdas,mses4)
 plt.plot(lambdas,mses3)
 plt.title('MSE for Test Data')
 plt.legend(['Using scipy.minimize','Direct minimization'])
-plt.show()
-
+# plt.show()
+#
 
 # Problem 5
 pmax = 7
-lambda_opt = 0 # REPLACE THIS WITH lambda_opt estimated from Problem 3
+lambda_opt = lambdas[np.argmin(mses3)]
 mses5_train = np.zeros((pmax,2))
 mses5 = np.zeros((pmax,2))
 for p in range(pmax):
