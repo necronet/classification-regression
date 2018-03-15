@@ -73,12 +73,16 @@ Xtest_i = np.concatenate((np.ones((Xtest.shape[0],1)), Xtest), axis=1)
 
 w = learnOLERegression(X,y)
 mle = testOLERegression(w,Xtest,ytest)
+mle_training = testOLERegression(w,X,y)
 
 w_i = learnOLERegression(X_i,y)
 mle_i = testOLERegression(w_i,Xtest_i,ytest)
+mle_train_i = testOLERegression(w_i,X_i,y)
 
-print('MSE without intercept '+str(mle))
-print('MSE with intercept '+str(mle_i))
+print('MSE without intercept (test) '+str(mle))
+print('MSE with intercept (test)'+str(mle_i))
+print('MSE without intercept (training) '+str(mle_training))
+print('MSE with intercept (training)'+str(mle_train_i))
 
 # Problem 3
 k = 101
