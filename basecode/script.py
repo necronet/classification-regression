@@ -104,6 +104,14 @@ plt.plot(lambdas,mses3)
 plt.title('MSE for Test Data')
 plt.show()
 
+lambda_opt = lambdas[np.argmin(mses3)]
+w_l = learnRidgeRegression(X_i,y,lambda_opt)
+mses3_train_optimal_lamda_training = testOLERegression(w_l,X_i,y)
+mses3_test_optimal_lamda_training = testOLERegression(w_l,Xtest_i,ytest)
+
+print('MSE optimal lambda(training) '+str(mses3_train_optimal_lamda_training))
+print('MSE optimal lambda(test)'+str(mses3_test_optimal_lamda_training))
+
 # Problem 4
 k = 101
 lambdas = np.linspace(0, 1, num=k)
@@ -128,12 +136,15 @@ plt.plot(lambdas,mses3_train)
 plt.title('MSE for Train Data')
 plt.legend(['Using scipy.minimize','Direct minimization'])
 
+print('MSE for gradient descent(training) ',mses4_train[np.argmin(mses4_train)])
+print('MSE for gradient descent(test) ',mses4[np.argmin(mses4)])
+
 plt.subplot(1, 2, 2)
 plt.plot(lambdas,mses4)
 plt.plot(lambdas,mses3)
 plt.title('MSE for Test Data')
 plt.legend(['Using scipy.minimize','Direct minimization'])
-# plt.show()
+plt.show()
 #
 
 # Problem 5
@@ -150,6 +161,12 @@ for p in range(pmax):
     w_d2 = learnRidgeRegression(Xd,y,lambda_opt)
     mses5_train[p,1] = testOLERegression(w_d2,Xd,y)
     mses5[p,1] = testOLERegression(w_d2,Xdtest,ytest)
+
+print('MSE for nonlinear no regularization (training) ',mses5_train[np.argmin(mses5_train[:,0]),0] )
+print('MSE for nonlinear no regularization  (test) ',mses5[np.argmin(mses5[:,0]),0])
+
+print('MSE for nonlinear regularization (training) ',mses5_train[np.argmin(mses5_train[:,1]),1])
+print('MSE for nonlinear regularization  (test) ',mses5[np.argmin(mses5[:,1]),1])
 
 fig = plt.figure(figsize=[12,6])
 plt.subplot(1, 2, 1)
