@@ -77,12 +77,12 @@ mle_training = testOLERegression(w,X,y)
 
 w_i = learnOLERegression(X_i,y)
 mle_i = testOLERegression(w_i,Xtest_i,ytest)
-mle_train_i = testOLERegression(w_i,X_i,y)
+mle_training_i = testOLERegression(w_i,X_i,y)
 
 print('MSE without intercept (test) '+str(mle))
 print('MSE with intercept (test)'+str(mle_i))
 print('MSE without intercept (training) '+str(mle_training))
-print('MSE with intercept (training)'+str(mle_train_i))
+print('MSE with intercept (training)'+str(mle_training_i))
 
 # Problem 3
 k = 101
